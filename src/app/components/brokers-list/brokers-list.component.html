@@ -1,0 +1,40 @@
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by name"
+          [(ngModel)]="name"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchName()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Brokers List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let broker of brokers; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveBroker(broker, i)"
+        >
+          {{ broker.name }}
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <app-broker-details
+        [viewMode]="true"
+        [currentBroker]="currentBroker"
+      ></app-broker-details>
+    </div>
+  </div>

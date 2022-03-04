@@ -1,0 +1,50 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentBroker.brokerId">
+      <h4>Broker</h4>
+      <div>
+        <label><strong>Name:</strong></label> {{ currentBroker.name }}
+      </div>
+      <a
+        class="badge badge-warning"
+        routerLink="/brokers/{{ currentBroker.brokerId }}"
+      >
+        Edit
+      </a>
+    </div>
+    <div *ngIf="!currentBroker">
+      <br />
+      <p>Please click on a Broker...</p>
+    </div>
+  </div>
+  <ng-template #editable>
+    <div *ngIf="currentBroker.brokerId" class="edit-form">
+      <h4>Tutorial</h4>
+      <form>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="currentBroker.name"
+            name="name"
+          />
+        </div>
+      </form>
+      <button class="badge badge-danger mr-2" (click)="deleteTutorial()">
+        Delete
+      </button>
+      <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updateTutorial()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+    <div *ngIf="!currentBroker.brokerId">
+      <br />
+      <p>Cannot access this Broker...</p>
+    </div>
+  </ng-template>
