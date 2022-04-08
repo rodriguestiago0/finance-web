@@ -1,0 +1,64 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentTicker.tickerId">
+      <h4>Ticker</h4>
+      <div>
+        <label><strong>Name:</strong></label> {{ currentTicker.name }}
+      </div>
+      <div>
+        <label><strong>Short Id:</strong></label> {{ currentTicker.shortId }}
+      </div>
+      <div>
+        <label><strong>TickerType:</strong></label> {{ currentTicker.tickerType }}
+      </div>
+      <div>
+        <label><strong>ISIN:</strong></label> {{ currentTicker.isin }}
+      </div>
+      <div>
+        <label><strong>Exchange:</strong></label> {{ currentTicker.exchange }}
+      </div>
+      <div>
+        <label><strong>Currency:</strong></label> {{ currentTicker.currency }}
+      </div>
+      <a class="btn btn-primary btn-sm" routerLink="/tickers/{{ currentTicker.tickerId }}">
+        Edit
+      </a>
+    </div>
+    <div *ngIf="!currentTicker">
+      <br />
+      <p>Please click on a Ticker...</p>
+    </div>
+  </div>
+  <ng-template #editable>
+    <div *ngIf="currentTicker.tickerId" class="edit-form">
+      <h4>Ticker</h4>
+      <form>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" [(ngModel)]="currentTicker.name" name="name" />
+          <label for="tickerType">Ticker Type</label>
+          <select class="form-control" id="tickerType" required [(ngModel)]="currentTicker.tickerType" name="tickerType">
+            <option *ngFor="let type of eTickerType | keyvalue" [ngValue]="type.value">{{type.value}}</option>
+          </select>
+          <label for="isin">ISIN</label>
+          <input type="text" class="form-control" id="isin" required minlength="12" [minLength]="12" [(ngModel)]="currentTicker.isin" name="isin" />        
+          <label for="exchange">Exchange</label>
+          <input type="text" class="form-control" id="exchange" required [(ngModel)]="currentTicker.exchange" name="exchange" />
+          <label for="currency">Currency</label>
+          <select class="form-control" id="currency" required [(ngModel)]="currentTicker.currency" name="currency">
+            <option *ngFor="let type of eCurrency | keyvalue" [ngValue]="type.value">{{type.value}}</option>
+          </select>
+        </div>
+      </form>
+      <button class="btn btn-danger btn-sm" (click)="deleteTicker()">
+        Delete
+      </button>
+      <button type="submit" class="btn btn-success btn-sm" (click)="updateTicker()">
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+    <div *ngIf="!currentTicker.tickerId">
+      <br />
+      <p>Cannot access this Ticker...</p>
+    </div>
+  </ng-template>

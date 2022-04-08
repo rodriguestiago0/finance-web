@@ -18,7 +18,7 @@ export class BrokersListComponent implements OnInit {
     this.retrieveBrokers();
   }
   retrieveBrokers(): void {
-    this.brokerService.getAll()
+    this.brokerService.getList()
       .subscribe({
         next: (data) => {
           this.brokers = data;
@@ -36,10 +36,10 @@ export class BrokersListComponent implements OnInit {
     this.currentBroker = broker;
     this.currentIndex = index;
   }
-  searchName(): void {
+  search(): void {
     this.currentBroker = {};
     this.currentIndex = -1;
-    this.brokerService.findByName(this.name)
+    this.brokerService.getList(1, 10, [["name", this.name]])
       .subscribe({
         next: (data) => {
           this.brokers = data;

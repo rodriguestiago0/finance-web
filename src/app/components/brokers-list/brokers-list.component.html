@@ -1,40 +1,35 @@
 <div class="list row">
     <div class="col-md-8">
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Search by name"
-          [(ngModel)]="name"
-        />
-        <div class="input-group-append">
-          <button
-            class="btn btn-outline-secondary"
-            type="button"
-            (click)="searchName()"
-          >
-            Search
-          </button>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="name" />
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" (click)="search()">
+                    Search
+                </button>
+            </div>
         </div>
-      </div>
     </div>
     <div class="col-md-6">
-      <h4>Brokers List</h4>
-      <ul class="list-group">
-        <li
-          class="list-group-item"
-          *ngFor="let broker of brokers; let i = index"
-          [class.active]="i == currentIndex"
-          (click)="setActiveBroker(broker, i)"
-        >
-          {{ broker.name }}
-        </li>
-      </ul>
+        <h4>Brokers List</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">File Importer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let broker of brokers; let i = index"
+                    [class.active]="i == currentIndex" (click)="setActiveBroker(broker, i)">
+                    <th scope="row">{{ broker.name }}</th>
+                    <td>{{ broker.country }}</td>
+                    <td>{{ broker.fileImporter }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <div class="col-md-6">
-      <app-broker-details
-        [viewMode]="true"
-        [currentBroker]="currentBroker"
-      ></app-broker-details>
+        <app-broker-details [viewMode]="true" [currentBroker]="currentBroker"></app-broker-details>
     </div>
-  </div>
+</div>

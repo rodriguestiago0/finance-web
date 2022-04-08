@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddBrokerComponent } from './add-broker.component';
+import { TickersListComponent } from './tickers-list.component';
 
-describe('AddBrokerComponent', () => {
-  let component: AddBrokerComponent;
-  let fixture: ComponentFixture<AddBrokerComponent>;
+describe('TickersListComponent', () => {
+  let component: TickersListComponent;
+  let fixture: ComponentFixture<TickersListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AddBrokerComponent]
+      declarations: [TickersListComponent]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddBrokerComponent);
+    fixture = TestBed.createComponent(TickersListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

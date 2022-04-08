@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Broker } from 'src/app/models/broker.model';
+import { FileImporter } from 'src/app/models/file-importer.enum';
 import { BrokerService } from 'src/app/services/broker.service';
 @Component({
   selector: 'app-add-broker',
@@ -8,8 +9,12 @@ import { BrokerService } from 'src/app/services/broker.service';
 })
 export class AddBrokerComponent implements OnInit {
   broker: Broker = {
-    name: ''
+    brokerId: '',
+    name: '',
+    country: '',
+    fileImporter: FileImporter.Degiro
   };
+  eFileImporter = FileImporter;
   submitted = false;
   constructor(private brokerService: BrokerService) { }
 
@@ -20,7 +25,7 @@ export class AddBrokerComponent implements OnInit {
     const data = {
       name: this.broker.name,
     };
-    this.brokerService.create(data)
+    this.brokerService.add(data)
       .subscribe({
         next: (res) => {
           console.log(res);
@@ -32,7 +37,10 @@ export class AddBrokerComponent implements OnInit {
   newBroker(): void {
     this.submitted = false;
     this.broker = {
-      name: ''
+      brokerId: '',
+      name: '',
+      country: '',
+      fileImporter: FileImporter.Degiro
     };
   }
 }

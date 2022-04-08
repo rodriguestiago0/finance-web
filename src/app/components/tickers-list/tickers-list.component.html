@@ -1,0 +1,41 @@
+<div class="list row">
+    <div class="col-md-8">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="name" />
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" (click)="search()">
+                    Search
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h4>Ticker List</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">ShortId</th>
+                    <th scope="col">Ticker Type</th>
+                    <th scope="col">ISIN</th>
+                    <th scope="col">Exchange</th>
+                    <th scope="col">Currency</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ticker of tickers; let i = index" [class.active]="i == currentIndex"
+                    (click)="setActiveTicker(ticker, i)">
+                    <th scope="row">{{ ticker.name }}</th>
+                    <td>{{ ticker.shortId }}</td>
+                    <td>{{ ticker.tickerType }}</td>
+                    <td>{{ ticker.isin }}</td>
+                    <td>{{ ticker.exchange }}</td>
+                    <td>{{ ticker.currency }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <app-ticker-details [viewMode]="true" [currentTicker]="currentTicker"></app-ticker-details>
+    </div>
+</div>

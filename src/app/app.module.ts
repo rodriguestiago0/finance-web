@@ -9,13 +9,19 @@ import { BrokersListComponent } from './components/brokers-list/brokers-list.com
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AddTickerComponent } from './components/add-ticker/add-ticker.component';
+import { TickerDetailsComponent } from './components/ticker-details/ticker-details.component';
+import { TickersListComponent } from './components/tickers-list/tickers-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddBrokerComponent,
     BrokerDetailsComponent,
-    BrokersListComponent
+    BrokersListComponent,
+    AddTickerComponent,
+    TickerDetailsComponent,
+    TickersListComponent
   ],
   imports: [
     BrowserModule,

@@ -8,9 +8,9 @@ describe('BrokersListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BrokersListComponent ]
+      declarations: [BrokersListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

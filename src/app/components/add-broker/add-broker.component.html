@@ -1,22 +1,22 @@
 <div>
-    <div class="submit-form">
-      <div *ngIf="!submitted">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            required
-            [(ngModel)]="broker.name"
-            name="name"
-          />
-        </div>
-        <button (click)="saveBroker()" class="btn btn-success">Submit</button>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required [(ngModel)]="broker.name" name="name" />
+        <label for="country">Country</label>
+        <input type="text" class="form-control" id="country" required [(ngModel)]="broker.country" name="country" />
+        <label for="fileImporter">File Importer</label>
+        <select class="form-control" id="fileImporter" required [(ngModel)]="broker.fileImporter" name="fileImporter">
+          <option [ngValue]="null">Select one...</option>
+          <option *ngFor="let type of eFileImporter | keyvalue" [ngValue]="type.value">{{type.value}}</option>
+        </select>
       </div>
-      <div *ngIf="submitted">
-        <h4>Broker was submitted successfully!</h4>
-        <button class="btn btn-success" (click)="newBroker()">Add</button>
-      </div>
+      <button (click)="saveBroker()" class="btn btn-success">Submit</button>
+    </div>
+    <div *ngIf="submitted">
+      <h4>Broker was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newBroker()">Add</button>
     </div>
   </div>
+</div>

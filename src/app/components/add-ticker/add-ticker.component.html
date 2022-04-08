@@ -1,0 +1,42 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required [(ngModel)]="ticker.name" name="name" />
+      </div>
+      <div class="form-group">
+        <label for="shortId">Short Id</label>
+        <input type="text" class="form-control" id="shortId" required [(ngModel)]="ticker.shortId" name="shortId" />
+      </div>
+      <div class="form-group">
+        <label for="tickerType">Ticker Type</label>
+        <select class="form-control" id="tickerType" required [(ngModel)]="ticker.tickerType" name="tickerType">
+          <option [ngValue]="null">Select one...</option>
+          <option *ngFor="let type of eTickerType | keyvalue" [ngValue]="type.value">{{type.value}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="isin">ISIN</label>
+        <input type="text" class="form-control" id="isin" required minlength="12" [minLength]="12"
+          [(ngModel)]="ticker.isin" name="isin" />
+      </div>
+      <div class="form-group">
+        <label for="exchange">Exchange</label>
+        <input type="text" class="form-control" id="exchange" required [(ngModel)]="ticker.exchange" name="exchange" />
+      </div>
+      <div class="form-group">
+        <label for="currency">Currency</label>
+        <select class="form-control" id="currency" required [(ngModel)]="ticker.currency" name="currency">
+          <option [ngValue]="null">Select one...</option>
+          <option *ngFor="let type of eCurrency | keyvalue" [ngValue]="type.value">{{type.value}}</option>
+        </select>
+      </div>
+      <button (click)="saveTicker()" class="btn btn-success">Submit</button>
+    </div>
+    <div *ngIf="submitted">
+      <h4>Ticker was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newTicker()">Add</button>
+    </div>
+  </div>
+</div>
