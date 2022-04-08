@@ -1,19 +1,25 @@
 <div>
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
+  <nav class="menu navbar navbar-expand-lg navbar-dark bg-dark">
     <a href="#" class="navbar-brand">Finance</a>
-    <div class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a routerLink="brokers" class="nav-link">Brokers</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="tickers" class="nav-link">Tickers</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="brokers/add" class="nav-link">Add Broker</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="tickers/add" class="nav-link">Add Ticker</a>
-      </li>
+    <div class="navbar-nav mr-auto mb-2 mb-lg-0">
+      <div class="btn-group nav-item">
+        <a routerLink="brokers" type="button" class="btn btn-primary btn-sm">Brokers</a>
+        <button type="button" class="btn btn-primary btn-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="visually-hidden">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" routerLink="brokers/add">Add Broker</a></li>
+        </ul>
+      </div>
+      <div class="btn-group nav-item">
+        <a routerLink="tickers" type="button" class="btn btn-primary btn-sm">Tickers</a>
+        <button type="button" class="btn btn-primary btn-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="visually-hidden">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" routerLink="tickers/add">Add Ticker</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
   <div class="container mt-3">
